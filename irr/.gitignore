@@ -1,0 +1,8 @@
+# reverse-engineering scratch + cached data (kept local, not part of the deliverable)
+__pycache__/
+cache/
+kripp.py
+build_cache.py
+validate.py
+perfield.py
+test_pairs.py
