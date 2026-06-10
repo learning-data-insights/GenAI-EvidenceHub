@@ -25,13 +25,14 @@ PROMPT_COLOR = "#2b6cb8"       # blue
 TRANSFORMER_COLOR = "#d9533f"  # red
 BAND_COLOR = "#dce9f5"
 
-TICK_FS = 16
-LABEL_FS = 18
-VALUE_FS = 14
-LEGEND_FS = 15
-GROUP_FS = 16
+TICK_FS = 18
+LABEL_FS = 20
+VALUE_FS = 16
+LEGEND_FS = 17
+GROUP_FS = 18
+NOTE_FS = 16
 
-fig, ax = plt.subplots(figsize=(13.5, 5.2))
+fig, ax = plt.subplots(figsize=(15, 5.4))
 
 n = len(DATA)
 ys = list(range(n - 1, -1, -1))  # first row at the top
@@ -88,6 +89,13 @@ ax.set_axisbelow(True)
 for side in ("top", "right", "left"):
     ax.spines[side].set_visible(False)
 ax.tick_params(axis="y", length=0)
+
+# Reader context note in the empty upper-left region
+ax.text(0.015, 0.94, "Higher QWK = better agreement\nwith human raters",
+        transform=ax.transAxes, ha="left", va="top", fontsize=NOTE_FS,
+        color="#444444", style="italic", zorder=4,
+        bbox=dict(boxstyle="round,pad=0.45", facecolor="white",
+                  edgecolor="#b0b0b0", alpha=0.95))
 
 legend_handles = [
     Line2D([], [], marker="o", linestyle="none", markersize=13,
